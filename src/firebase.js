@@ -13,5 +13,6 @@
   measurementId: "G-2QN2JRWHH7"
 
    });
-   const db = firebaseApp.firestore();
-   export default db;
+   export const db = firebaseApp.firestore();
+   export const auth = firebase.auth();
+   export default firebaseApp;
