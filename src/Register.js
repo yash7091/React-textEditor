@@ -27,9 +27,9 @@ function Register() {
     
     return (
         <div>
-                <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-                <button onClick={sbmt}>Submit</button>
+            <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+            <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+            <button onClick={sbmt}>Submit</button>
         </div>
     )
 }
