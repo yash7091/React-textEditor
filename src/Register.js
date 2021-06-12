@@ -16,7 +16,7 @@ function Register() {
 
         auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            history.push("/Home");
+            history.push("/");
         })
         .catch((error) => {
             var errorCode = error.code;
