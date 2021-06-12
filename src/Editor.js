@@ -1,8 +1,7 @@
 import React from 'react'
-import {db} from './firebase'
-import {useState,useEffect} from "react"
+import {db, auth} from './firebase'
+import {useState} from "react"
 import {useParams} from 'react-router-dom'
-import firebase from "firebase"
 
 function Editor() {
     const [input, setInput] = useState("");
@@ -12,10 +11,8 @@ function Editor() {
     const Submit=(e)=>{
       db.collection('text').doc(id).set({
         input:input,
-        owner:firebase.auth().currentUser.email,
-        owner_id:firebase.auth().currentUser.uid,
-
-        // timestamp:firebase.firestore.FieldValue.serverTimestamp()
+        owner:auth.currentUser.email,
+        owner_id:auth.currentUser.uid,
       })
       setInput(e.target.value);
     }
