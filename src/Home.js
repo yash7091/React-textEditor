@@ -7,7 +7,10 @@ function Home() {
     const {currentUser}=useAuth();
     const [docs,setdocs]=useState([]);
     const newfile=()=>{ 
-        firebaseapp.firestore().collection('text').add({}).then(
+        firebaseapp.firestore().collection('text').add({
+            input:"",
+            file_name:"Untitled",
+        }).then(
            (ref)=>{
                console.log(ref.id)
                 history.push('/'+ref.id)

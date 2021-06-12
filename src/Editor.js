@@ -15,6 +15,7 @@ function Editor() {
         owner_id:auth.currentUser.uid,
       })
       setInput(e.target.value);
+      console.log(" submit function")
     }
     
 
@@ -25,18 +26,20 @@ function Editor() {
       setnm(e.target.value);
 
     }
-    // useEffect(
-    //   ()=>{
-    //     db.collection('text').doc(id).get().then(
-    //         (doc)=>{
-    //           setInput(doc.data.input)
-    //           setnm(doc.data.file_name)
-    //         }
+    useEffect(
+      ()=>{
+        db.collection('text').doc(id).get().then(
+            (doc)=>{
+              setInput(doc.data().input)
+              setnm(doc.data().file_name)
+              console.log("useeffect ")
+            }
+           
             
-    //     )
-    //   }
-    //   ,[]
-    // )
+        )
+      }
+      ,[]
+    )
     return (
         <div>
         <div className="App">
