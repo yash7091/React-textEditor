@@ -15,12 +15,14 @@ function App() {
     <div className="App">
       <AuthProvider>      
         <Router>
-          <Navbar />
-          <Switch>
+        <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute exact path="/:id" component={Editor} />
+            <div>
+              <Navbar />
+              <PrivateRoute exact path="/" component={Home} />
+              <PrivateRoute exact path="/:id" component={Editor} />
+            </div>
           </Switch>
         </Router>
       </AuthProvider>

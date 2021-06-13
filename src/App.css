@@ -40,8 +40,6 @@
   margin: 0 !important;
   padding: 0 !important;
 }
-.editor__area{
-  height: 20vh;
-  width: 40vh;
-
+.btn:focus, .btn:active{
+  box-shadow: none;
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {useHistory} from 'react-router-dom';
-import  firebaseapp from './firebase'
+import  {db, auth} from './firebase'
 import {useAuth} from './contexts/AuthContext';
+import './Home.css'
 
 function Home() {
     const history =useHistory();
@@ -9,7 +10,7 @@ function Home() {
     const [docs,setdocs]=useState([]);
 
     const newfile=()=>{ 
-        firebaseapp.firestore().collection('text').add({
+        db.collection('text').add({
             input:"",
             file_name:"Untitled",
         }).then((ref)=>{
@@ -20,7 +21,7 @@ function Home() {
     }
 
     useEffect(()=>{
-            firebaseapp.firestore().collection('text').where("owner",'==',currentUser.email ).get().then(
+            db.collection('text').where("owner",'==',currentUser.email ).get().then(
                 (querySnapshot) => {
                     let temp=[]
                     querySnapshot.forEach((doc) => {
@@ -38,7 +39,7 @@ function Home() {
     }
 
     return (
-        <div>
+        <div className="home">
             <button onClick={newfile}>New file</button>
             {docs.map((doc)=>{
                     return <button value={doc[0]} onClick={clickbtn}>{doc[1].file_name}</button>
