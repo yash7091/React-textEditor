@@ -39,7 +39,6 @@ function Home() {
 
     return (
         <div>
-
             <button onClick={newfile}>New file</button>
             {docs.map((doc)=>{
                     return <button value={doc[0]} onClick={clickbtn}>{doc[1].file_name}</button>
