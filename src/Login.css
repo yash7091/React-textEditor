@@ -1,0 +1,29 @@
+.login {
+  display: flex;
+  flex-direction: column;
+}
+.login > div:nth-child(2) {
+  flex-direction: column;
+}
+.login-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bg {
+  background: url("./Radiant-Gradient.svg");
+  background-size: cover;
+  background-position: right;
+}
+.login-panel input {
+  background-color: #ecf2f7 !important;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px !important;
+}
+.login-panel input:focus, .login-panel input:active{
+    box-shadow: none !important;
+    border:none !important;
+    outline: none !important;
+}

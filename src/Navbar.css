@@ -1,0 +1,39 @@
+navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70px;
+    height: 100vh;
+    background-color: #05043e;
+}
+navbar i{
+    color: #fff;
+    margin: 25px 0 !important;
+    opacity: 0.8;
+    font-size: 1.45rem !important;
+}
+navbar i:hover{
+    opacity: 1;
+}
+navbar img{
+    margin: 40px 0 80px !important;
+}
+@media (max-width:760px){
+    navbar{
+        bottom: 0 !important;
+        left:0;
+        height: 70px !important;
+        width: 100vw;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    navbar i{
+        margin: 0 15px !important;
+    }
+    navbar img{
+        display: none;
+    }
+}

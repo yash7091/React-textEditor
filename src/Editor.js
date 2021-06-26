@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import {db} from './firebase'
 import {useState} from "react"
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import { useAuth } from './contexts/AuthContext';
+import './Editor.css'
 
 function Editor() {
     const [input, setInput] = useState("");
@@ -35,11 +36,14 @@ function Editor() {
     },[id])
 
     return (
-        <div>
-        <div className="App">
-          <textarea type="text" class="editor__area" value={input} onChange={Submit}/>
-          <input type="text" value={nm} onChange={savenm}/>
-        </div>
+        <div className="editor">
+          <div className="titlebar">
+            <Link to="/"><i class="fas fa-arrow-left"></i></Link><input className="shadow p-3 rounded-pill" type="text" value={nm} onChange={savenm}/>
+          </div>
+          <br />
+          <div className="d-flex justify-content-center">
+           <textarea className="shadow-lg p-5" type="text" value={input} onChange={Submit}/>
+          </div>
         </div>
     )
 
