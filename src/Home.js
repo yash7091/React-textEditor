@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useHistory} from 'react-router-dom';
 import  firebaseapp from './firebase'
 import {useAuth} from './contexts/AuthContext';
-
+import './Home.css'
 function Home() {
     const history =useHistory();
     const {currentUser}=useAuth();
