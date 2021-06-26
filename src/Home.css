@@ -1,3 +1,15 @@
 .home{
     margin-left: 5vw !important;
 }
+.card_row{
+    color: black;
+}
+.card_row button{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-family: 'Montaga', serif;
+}
+.card_row h5{
+    text-align: left;
+}
