@@ -1,0 +1,35 @@
+.editor{
+    margin-left: 5vw !important;
+}
+.titlebar{
+    display: flex;
+    align-items: center;
+    padding: 20px !important;
+    color: #000;
+}
+.titlebar i{
+    font-size: 1.45rem !important;
+}
+.titlebar input{
+    border:0;
+    outline: 0;
+    margin: 0 20px !important;
+}
+.editor textarea{
+    width:65%;
+    height: 150vh;
+    border:0;
+    outline: 0;
+    margin: 50px 0 100px !important;
+    border-radius: 10px;
+}
+.editor textarea::selection{
+    color: #000;
+    background-color: rgba(255, 166, 0, 0.678);
+}
+@media (max-width:760px) {
+    .editor textarea{
+        width: 85%;
+        height: 100vh;
+    }
+}

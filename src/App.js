@@ -6,21 +6,26 @@ import Login from './Login'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import {AuthProvider} from './contexts/AuthContext'
 import PrivateRoute from './PrivateRoute';
+import Navbar from './Navbar'
+import {useAuth} from './contexts/AuthContext'
 
 function App() {
-
+  // const {currentUser} = useAuth()
   return (
     <div className="App">
       <AuthProvider>      
         <Router>
-          <Switch>
+        <Switch>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <PrivateRoute exact path="/" component={Home} />
-            <PrivateRoute exact path="/:id" component={Editor} />
+            <div>
+              <Navbar />
+              <PrivateRoute exact path="/" component={Home} />
+              <PrivateRoute exact path="/:id" component={Editor} />
+            </div>
           </Switch>
         </Router>
-      </AuthProvider>   
+      </AuthProvider>
     </div>
   );
 }
