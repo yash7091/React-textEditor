@@ -17,15 +17,18 @@ function Editor() {
         input:input,
         owner:currentUser.email,
         owner_id:currentUser.uid,
+        updated_on:new Date().toString(),
       })
     }
     
 
     const savenm=(e)=>{
+      setnm(e.target.value);
       db.collection('text').doc(id).update({
         file_name:nm,
+        updated_on:new Date().toString(),
       })
-      setnm(e.target.value);
+      
     }
 
     useEffect(()=>{
