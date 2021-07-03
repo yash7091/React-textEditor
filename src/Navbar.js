@@ -9,6 +9,9 @@ function Navbar() {
         db.collection('text').add({
             input:"",
             file_name:"Untitled",
+            created_on:new Date().toString(),
+            updated_on:new Date().toString(),
+            
         }).then((ref)=>{
                 history.push('/'+ref.id)
         }).catch(error=>{

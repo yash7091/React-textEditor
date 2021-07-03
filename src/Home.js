@@ -42,6 +42,88 @@ function Home() {
         history.push('/'+e.target.value);  
         
     }
+    const calculateTime=(date,status)=>{
+        console.log(date);
+            const ld=date.split(" ");
+            const cd = new Date().toString().split(" ");
+            
+            
+            //years >1 updated few years ago 
+            
+            
+            // year differece<1 
+                // months -1 updated last month
+                // months <1 
+                    //days difference >7 --- few weeks ago 
+                    //days differe <7---
+                        // 1--7 days ago 
+                        // hourse ago 
+                            // hrs <1  ---mins 
+                            // x hrs ago 
+                //>1 difference months ago  
+
+                   
+
+                if(cd[3]-ld[3]==1)
+                {
+                    return status+" last years . ";   
+                }
+                if(cd[3]-ld[3]>1)
+                {
+                    return status+" few years ago. ";   
+                }
+                else{
+                    if(cd[1]==ld[1])
+                    {
+                        if(cd[2]-ld[2]>7)
+                        {
+                            return status +"few weeeks ago";
+                        }
+                        if(cd[2]-ld[2]==7)
+                        {
+                            return status +"last weeek ";
+                        }
+                        else{
+                            if(cd[2]-ld[2]==1)
+                            {
+                                return status +"yesterday";
+                            }
+                            if(cd[2]-ld[2]>1)
+                            {
+                                return status+" " +(cd[2]-ld[2])+" days ago";
+                            }
+                            else{
+                                const ch = cd[4].split(":")[0];
+                                const lh = ld[4].split(":")[0];
+                                if(ch-lh>1)
+                                {
+                                    return status+" "+(ch-lh)+" hours ago";
+                                }
+                                if(ch-lh==1)
+                                {
+                                    return status+"last hours";
+                                }
+                                else{
+                                    const cm = cd[4].split(":")[1];
+                                    const lm = ld[4].split(":")[1];
+                                    if(cm-lm>1)
+                                        return status+(cm-lm)+" mins ago";
+                                    else 
+                                        return status + " few secs ago "
+                                }
+
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        return status+" few months ago";
+                    }
+
+                }
+
+           
+    }
 
     return (
         <div className="home">
@@ -55,8 +137,15 @@ function Home() {
                                 <h5>    
                                     {doc[1].file_name}
                                 </h5>
-                                {/* <p>{doc[1].created_on}</p>
-                                <p>{doc[1].updated_on}</p> */}
+{                                console.log(doc[1].created_on)
+
+
+}                               
+
+
+                                 <p>{calculateTime(doc[1].created_on,"Created :")}</p>
+                                <p>{calculateTime(doc[1].updated_on,"Updated :")}</p>
+
                             </button>
                             </div>
                         </div>
