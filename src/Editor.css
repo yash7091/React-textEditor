@@ -28,6 +28,7 @@
     color: #000;
     background-color: rgba(255, 166, 0, 0.678);
 }
+
 @media (max-width:760px) {
     .editor textarea{
         width: 85%;

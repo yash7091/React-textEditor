@@ -8,22 +8,8 @@ function Home() {
     const history =useHistory();
     const [docs,setdocs]=useState([]);
     const {currentUser}=useAuth(); 
+    const [toggle,setToggle]=useState(false)
 
-    const newfile=()=>{ 
-        db.collection('text').add({
-            input:"",
-            file_name:"Untitled",
-            owner:currentUser.email,
-         owner_id:currentUser.uid,
-            created_on:new Date().toString(),
-            updated_on:new Date().toString(),
-
-        }).then((ref)=>{
-                history.push('/'+ref.id)
-        }).catch(error=>{
-            console.log(error.code, error.message);
-        })  
-    }
 
     useEffect(()=>{
             db.collection('text').where("owner",'==',currentUser.email ).get().then(
@@ -42,32 +28,12 @@ function Home() {
     const clickbtn=(url)=>{
         if(!url)
             return;
-        // e.preventDefault();
-        // console.log(e.target.value);
         history.push('/'+url);  
-        
     }
     const calculateTime=(date,status)=>{
         console.log(date);
             const ld=date.split(" ");
             const cd = new Date().toString().split(" ");
-            
-            
-            //years >1 updated few years ago 
-            
-            
-            // year differece<1 
-                // months -1 updated last month
-                // months <1 
-                    //days difference >7 --- few weeks ago 
-                    //days differe <7---
-                        // 1--7 days ago 
-                        // hourse ago 
-                            // hrs <1  ---mins 
-                            // x hrs ago 
-                //>1 difference months ago  
-
-                   
 
                 if(cd[3]-ld[3]==1)
                 {
@@ -129,7 +95,22 @@ function Home() {
 
            
     }
+    const deleteme=(e)=>{
+                    console.log("inside delte")
 
+        const id = e.target.parentNode.parentNode.value;
+        console.log(id)
+
+        if(!id)
+            return;
+         db.collection('text').doc(id).update(
+                {
+                    
+                    isDeleted:true,
+                }
+            )
+
+        }
     return (
         <div className="home">
             {/* <button onClick={newfile}>New file</button> */}
@@ -139,10 +120,14 @@ function Home() {
                         <div className="column col-md-6 col-lg-4  p-3  ">
                             <div className="h-100 w-100 shadow-lg p-4 card_row">
                             <button className="h-100 w-100 btn " value={doc[0]} onClick={(e)=>{clickbtn(e.target.value)}}>
-                                <h5>    
-                                    {doc[1].file_name}
-                                </h5>
-                             
+                               <div className="card__header">
+                                    <h5>    
+                                        {doc[1].file_name}
+                                    </h5>
+                                    <button onClick={deleteme} > 
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
                                 <br/>
                                 <div class="card__footer">
                                  <p>{calculateTime(doc[1].created_on,"Created ")}</p>

@@ -16,6 +16,7 @@ function Navbar() {
         owner_id:currentUser.uid,
             created_on:new Date().toString(),
             updated_on:new Date().toString(),
+            isDeleted:false,
 
         }).then((ref)=>{
                 history.push('/'+ref.id)
