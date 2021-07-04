@@ -2,13 +2,22 @@ import React from 'react'
 import './Navbar.css'
 import {Link, useHistory} from 'react-router-dom'
 import {db, auth} from './firebase'
+import {useAuth} from './contexts/AuthContext';
 
 function Navbar() {
     const history=useHistory()
+    const {currentUser}=useAuth(); 
+
     const newfile=()=>{ 
         db.collection('text').add({
             input:"",
             file_name:"Untitled",
+            owner:currentUser.email,
+        owner_id:currentUser.uid,
+            created_on:new Date().toString(),
+            updated_on:new Date().toString(),
+            isDeleted:false,
+
         }).then((ref)=>{
                 history.push('/'+ref.id)
         }).catch(error=>{

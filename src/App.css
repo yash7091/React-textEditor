@@ -43,3 +43,16 @@
 .btn:focus, .btn:active{
   box-shadow: none;
 }
+.navbar{
+  position: fixed;
+  bottom: 0;
+}
+
+@media (max-width:760px){
+  .navbar{
+      bottom: 0 !important;
+      left:0;
+    
+  }
+ 
+}
