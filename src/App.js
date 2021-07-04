@@ -8,7 +8,6 @@ import {AuthProvider} from './contexts/AuthContext'
 import PrivateRoute from './PrivateRoute';
 import Navbar from './Navbar'
 import {useAuth} from './contexts/AuthContext'
-
 function App() {
   // const {currentUser} = useAuth()
   return (
@@ -19,7 +18,9 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <div>
-              <Navbar />
+              <div className="navbar" >
+                  <Navbar  />
+              </div>
               <PrivateRoute exact path="/" component={Home} />
               <PrivateRoute exact path="/:id" component={Editor} />
             </div>

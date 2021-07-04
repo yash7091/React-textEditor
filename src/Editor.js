@@ -15,8 +15,7 @@ function Editor() {
       setInput(e.target.value);
       db.collection('text').doc(id).update({
         input:input,
-        owner:currentUser.email,
-        owner_id:currentUser.uid,
+       
         updated_on:new Date().toString(),
       })
     }

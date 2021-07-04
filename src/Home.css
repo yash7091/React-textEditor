@@ -1,5 +1,5 @@
 .home{
-    margin-left: 5vw !important;
+    margin-left: 7vw !important;
 }
 .card_row{
     color: black;
@@ -10,6 +10,29 @@
     font-weight: bold;
     font-family: 'Montaga', serif;
 }
+button h5{
+    font-size: 1.5rem;
+    font-weight: 300;
+}
 .card_row h5{
     text-align: left;
+}
+.card__footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    /* float: bottom; */
+}
+.card__footer p{
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+@media (max-width:760px){
+  .home{
+      margin:5px !important;
+      margin-bottom: 80px !important;
+
+  }
 }

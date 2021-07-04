@@ -6,15 +6,18 @@ import './Home.css'
 
 function Home() {
     const history =useHistory();
-    const {currentUser}=useAuth();
     const [docs,setdocs]=useState([]);
+    const {currentUser}=useAuth(); 
 
     const newfile=()=>{ 
         db.collection('text').add({
             input:"",
             file_name:"Untitled",
+            owner:currentUser.email,
+         owner_id:currentUser.uid,
             created_on:new Date().toString(),
             updated_on:new Date().toString(),
+
         }).then((ref)=>{
                 history.push('/'+ref.id)
         }).catch(error=>{
@@ -36,10 +39,12 @@ function Home() {
             })
     },[currentUser])
 
-    const clickbtn=(e)=>{
-        e.preventDefault();
-        console.log(e.target.value);
-        history.push('/'+e.target.value);  
+    const clickbtn=(url)=>{
+        if(!url)
+            return;
+        // e.preventDefault();
+        // console.log(e.target.value);
+        history.push('/'+url);  
         
     }
     const calculateTime=(date,status)=>{
@@ -127,25 +132,22 @@ function Home() {
 
     return (
         <div className="home">
-            <button onClick={newfile}>New file</button>
+            {/* <button onClick={newfile}>New file</button> */}
             <div className="row g-lg-2" >
             {docs.map((doc)=>{
                     return (
-                        <div className="column col-md-6 col-lg-4  p-2  ">
-                            <div className="h-100 w-100 shadow-lg card_row">
-                            <button className="h-100 w-100 btn " value={doc[0]} onClick={clickbtn}>
+                        <div className="column col-md-6 col-lg-4  p-3  ">
+                            <div className="h-100 w-100 shadow-lg p-4 card_row">
+                            <button className="h-100 w-100 btn " value={doc[0]} onClick={(e)=>{clickbtn(e.target.value)}}>
                                 <h5>    
                                     {doc[1].file_name}
                                 </h5>
-{                                console.log(doc[1].created_on)
-
-
-}                               
-
-
-                                 <p>{calculateTime(doc[1].created_on,"Created :")}</p>
-                                <p>{calculateTime(doc[1].updated_on,"Updated :")}</p>
-
+                             
+                                <br/>
+                                <div class="card__footer">
+                                 <p>{calculateTime(doc[1].created_on,"Created ")}</p>
+                                <p>{calculateTime(doc[1].updated_on,"Updated ")}</p>
+                                </div>    
                             </button>
                             </div>
                         </div>
