@@ -1,7 +1,4 @@
 navbar{
-    /* position: fixed;
-    top: 0;
-    left: 0; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,8 +20,6 @@ navbar img{
 }
 @media (max-width:760px){
     navbar{
-        /* bottom: 0 !important;
-        left:0; */
         height: 70px !important;
         width: 100vw;
         flex-direction: row;

@@ -15,25 +15,37 @@
     justify-content: space-between;
     width: 100%;
 }
+.card_row h5{
+    margin: 0;
+    padding: 0;
+    font-size: 1.8rem;
+    font-weight: 200;
+    text-align: left;
+}
 .card__header button{
-    border: none;
     background: none;
     outline: none;
-    opacity: 0.6;
+    margin: 0 10px !important;
+    font-size: 1.3rem !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-button h5{
-    font-size: 1.5rem;
-    font-weight: 300;
+.card__header button:nth-child(1){
+    border: 1px solid #05043e;
+    color: #05043e;
 }
-.card_row h5{
-    text-align: left;
+.card__header button:nth-child(2){
+    border: 1px solid #d11b1b;
+    color: #d11b1b;
 }
 .card__footer{
     width: 100%;
     display: flex;
     justify-content: space-between;
-
-    /* float: bottom; */
 }
 .card__footer p{
     font-size: 0.8rem;

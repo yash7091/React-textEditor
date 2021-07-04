@@ -2,20 +2,19 @@ import React, { useEffect } from 'react'
 import {db} from './firebase'
 import {useState} from "react"
 import {useParams, Link} from 'react-router-dom'
-import { useAuth } from './contexts/AuthContext';
 import './Editor.css'
+import Loader from './Loader'
 
 function Editor() {
     const [input, setInput] = useState("");
     const {id}=useParams();
     const [nm,setnm]=useState("Untitled");
-    const {currentUser}=useAuth(); 
+    const [loading, setloading] = useState(true);
   
     const Submit=(e)=>{
       setInput(e.target.value);
       db.collection('text').doc(id).update({
-        input:input,
-       
+        input:e.target.value,
         updated_on:new Date().toString(),
       })
     }
@@ -24,10 +23,9 @@ function Editor() {
     const savenm=(e)=>{
       setnm(e.target.value);
       db.collection('text').doc(id).update({
-        file_name:nm,
+        file_name:e.target.value,
         updated_on:new Date().toString(),
       })
-      
     }
 
     useEffect(()=>{
@@ -37,7 +35,13 @@ function Editor() {
         })
     },[id])
 
-    return (
+    setTimeout(() => {
+      setloading(false);
+    }, 2000);
+
+    return (loading?
+        <Loader />
+        :
         <div className="editor">
           <div className="titlebar">
             <Link to="/"><i class="fas fa-arrow-left"></i></Link><input className="shadow p-3 rounded-pill" type="text" value={nm} onChange={savenm}/>

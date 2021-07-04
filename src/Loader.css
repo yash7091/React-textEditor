@@ -1,0 +1,38 @@
+.loader{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader > div{
+    width: 80px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.loader > div > div{
+    width: 20px;
+    height: 20px;
+    background-color: #05043e;
+    border-radius: 2px;
+    animation: rotate 2s ease-in-out infinite;
+}
+@keyframes rotate{
+    0%{
+        transform: rotate(45deg);
+    }
+    33%{
+        transform: rotate(135deg);
+    }
+    66%{
+        transform: rotate(225deg);
+    }
+    100%{
+        transform: rotate(315deg);
+    }
+}

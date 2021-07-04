@@ -24,6 +24,7 @@ function Navbar() {
             console.log(error.code, error.message);
         })  
     }
+    
     const logout=(e)=>{
         e.preventDefault();
         auth.signOut().then(()=>{
